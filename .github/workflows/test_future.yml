@@ -9,9 +9,9 @@ jobs:
   unittest:
 
     runs-on: ${{ matrix.os }}
-    
+
     continue-on-error: true
-    
+
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-12]
@@ -32,21 +32,21 @@ jobs:
     - name: Checkout Swift
       uses: actions/checkout@v4
       with:
-        ref: future
+        ref: master
         repository: jhavl/swift
         path: swift
 
     - name: Checkout Spatialmath
       uses: actions/checkout@v4
       with:
-        ref: future
+        ref: master
         repository: petercorke/spatialmath-python
         path: sm
 
     - name: Checkout Spatialgeometry
       uses: actions/checkout@v4
       with:
-        ref: future
+        ref: main
         repository: jhavl/spatialgeometry
         path: sg
 
@@ -70,7 +70,7 @@ jobs:
     - name: Specific numpy version for Ubuntu (pybullet dep)
       if: runner.os == 'Linux'
       run: pip install numpy==1.26.4
-        
+
     - name: Test with pytest
       run: |
         cd robotics-toolbox-python
