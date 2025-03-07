@@ -1,6 +1,7 @@
 name: Test - Future
 
 on:
+  workflow_dispatch:
   push:
     branches: [ future ]
 
@@ -21,13 +22,13 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
-        
+
     - name: Checkout future branch
       uses: actions/checkout@v4
       with:
         ref: future
         path: robotics-toolbox-python
-        
+
     - name: Checkout Swift
       uses: actions/checkout@v4
       with:
@@ -48,7 +49,7 @@ jobs:
         ref: future
         repository: jhavl/spatialgeometry
         path: sg
-        
+
     - name: Install dependencies
       run: |
         echo "Update pip"
